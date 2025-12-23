@@ -9,11 +9,11 @@ class ArduinoController:
         try:
             self.board = Arduino(port)
             self.board.samplingOn()
+            self.servos = []
         except:
             raise ValueError("Arduino not found")
     
     def initialiseServos(self, *ServoPins):
-        self.servos = []
         for pin in ServoPins:
             self.servos.append(self.board.get_pin(f"d:{pin}:s"))
     
